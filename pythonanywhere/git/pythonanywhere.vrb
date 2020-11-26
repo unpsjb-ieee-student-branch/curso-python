@@ -1,16 +1,18 @@
-\frametitle{Como trabajar con git}
-	
-\begin{enumerate}
-	\item Escribimos programas en nuestras computadoras, con un entorno de programación cómodo y amigable.
-	\item ``Depositamos" los programas que escribimos en un repositorio en Github.
-	\item Empleamos los comandos en la consola
-	\begin{verbatim}
-		git clone https://github.com/usuario/repositorio.git
-	\end{verbatim}
-    y
-	\begin{verbatim}
-	git pull
-    \end{verbatim}
-    para transferir los programas a \verb-pythonanywhere.com-.
-	
-\end{enumerate}
+\frametitle{Ejercicios en la consola bash}
+	\begin{enumerate}
+		\item Ejecute
+		\begin{verbatim}
+			git clone https://github.com/unpsjb-ieee-student-branch/curso-python.git
+		\end{verbatim}
+	    o
+        \begin{verbatim}
+	    git pull
+        \end{verbatim}	
+        lo que sea necesario.
+	    \item \begin{verbatim}cd curso-python/pythonanywhere/brainz\end{verbatim}
+	    \item \begin{verbatim}
+	    	python3 brainz.py
+	    \end{verbatim}
+        \item Comente en el foro que es lo que hace el programa brainz. Explique sus instrucciones y lógica.
+	\end{enumerate}
+
