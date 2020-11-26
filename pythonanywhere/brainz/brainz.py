@@ -49,5 +49,15 @@ except KeyboardInterrupt:
     pass
 except EOFError:
     pass
+
+if ok > wrong:
+    if ok > 10:
+        print('Good!')
+    elif ok > 50:
+        print('Excellent!')
+    elif ok > 100:
+        print('https://www.nimh.nih.gov/health/topics/obsessive-compulsive-disorder-ocd/index.shtml')
+else:
+    print('mmm!')
 print('ok {ok:d} - wrong {wrong:d}')
 
