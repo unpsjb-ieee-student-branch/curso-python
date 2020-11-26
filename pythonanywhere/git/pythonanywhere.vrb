@@ -1,0 +1,16 @@
+\frametitle{Como trabajar con git}
+	
+\begin{enumerate}
+	\item Escribimos programas en nuestras computadoras, con un entorno de programación cómodo y amigable.
+	\item ``Depositamos" los programas que escribimos en un repositorio en Github.
+	\item Empleamos los comandos en la consola
+	\begin{verbatim}
+		git clone https://github.com/usuario/repositorio.git
+	\end{verbatim}
+    y
+	\begin{verbatim}
+	git pull
+    \end{verbatim}
+    para transferir los programas a \verb-pythonanywhere.com-.
+	
+\end{enumerate}

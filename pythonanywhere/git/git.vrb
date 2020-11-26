@@ -1,0 +1,8 @@
+\frametitle{Cambiar de ramas}
+	
+	Comando para cambiar de rama (¡atención!)
+	\begin{verbatim}
+		git checkout main         # volvemos a la rama main
+		git checkout nombre_rama  # volvemos a la rama nombre_rama
+	\end{verbatim}
+	

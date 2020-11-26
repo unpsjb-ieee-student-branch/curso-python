@@ -1,0 +1,597 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[GIT]{Sistema de control de versiones GIT} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Daniel Walther Berns} % Your name
+\institute[FI-UNPSJB] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Departamento de Ingenier\'{\i}a Electr\'{o}nica - Facultad de Ingenier\'{\i}a 
+
+\medskip
+
+Universidad Nacional de la Patagonia San Juan Bosco \\ % Your institution for the title page
+
+\medskip
+\textit{daniel.w.berns@gmail.com} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{GIT: WTF?} 
+
+%------------------------------------------------
+
+\subsection{Preguntas y ejemplos} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{\textquestiondown Qu\'{e} queremos?}
+
+\begin{enumerate}
+\item<1-> Queremos programar la placa Raspberry Pi: En realidad, queremos programar la placa Raspberry Pi ``embebida'' o ``incorporada'' en un sistema m\'{a}s grande. La \'{u}nica seguridad que tenemos es que la placa va a estar conectada a Internet (ver Internet de las cosas), sin teclado, rat\'{o}n, o monitor. 
+\item<2-> Queremos trabajar con un servidor ``en la nube", donde tenemos un sitio web propio o donde ejecutamos un programa que realiza algún cálculo o proceso durante mucho tiempo (varios días).
+\end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\textquestiondown C\'{o}mo hacemos?}
+
+\begin{enumerate}
+\item<1-> \textquestiondown C\'{o}mo hacemos para instalar o actualizar el software instalada en estos sistemas sin acceso físico?
+\item<2-> \textquestiondown C\'{o}mo hacemos para desarrollar software para estos sistemas?
+\item<3-> \textquestiondown C\'{o}mo podemos desarrollar el software en nuestra PC y transferirlo con rapidez a la computadora donde se ejecutará?
+\end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Una propuesta}
+\begin{itemize}
+\item Podemos desarrollar en una PC o notebook
+\item despu\'{e}s copiar nuestro trabajo a un servidor
+\item y finalmente copiar desde el servidor a la computadora de trabajo. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Las razones de la propuesta}
+\begin{itemize}
+\item<1-> Podemos desarrollar en una PC o notebook para trabajar c\'{o}modos, tal vez varias personas en equipo,
+\item<2-> despu\'{e}s copiar nuestro trabajo a un repositorio de software en un sitio web conocido, 
+\item<3-> y finalmente copiar desde el servidor al sistema embebido o servidor de Internet, con una actualizaci\'{o}n automatizada.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Preguntas}
+\begin{itemize}
+\item \textquestiondown Para qu\'{e} un sitio web con un repositorio?
+\item \textquestiondown Para qu\'{e} varias personas en equipo? ``Yo trabajo solo''.
+\item \textquestiondown Actualizaci\'{o}n automatizada?
+\item \textquestiondown Como evitamos problemas con las versiones del software?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Respuestas}
+
+\begin{block}{\textquestiondown Para qu\'{e} un sitio web con un repositorio?}
+El servidor nos permite independizar el software de las computadoras donde desarrollamos el software. 
+Los sistemas conectados a Internet tienen una direcci\'{o}n IP, al igual que las computadoras donde se desarrolla el software. 
+
+Para las actualizaciones, nuestros sistemas embebidos o sitios web necesitan una direcci\'{o}n IP conocida, la del repositorio.
+
+Las personas que desarrollan el software pueden cambiar, sus computadoras pueden cambiar, pero el software est\'{a} siempre en el repositorio donde puede ser recuperado y actualizado. 
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Respuestas}
+
+\begin{block}{\textquestiondown Para qu\'{e} varias personas en equipo? ``Yo trabajo solo''.}
+Aún cuando una persona trabaje sola en un momento determinado, no trabaja para si misma. El hecho de guardar el software en un repositorio facilita la entrega del software a quien haya solicitado el desarrollo. Además, el repostorio puede servir también como lugar para un sistema de manejo de asuntos relacionados al software, donde se va construyendo la historia de anuncios, modificaciones, problemas y características del software.
+\end{block}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Respuestas}
+
+\begin{block}{``Yo trabajo solo'' no existe en el movimiento Open Source}
+El software y hardware producido en forma Open Source (libre y gratuito para usar y modificar) se construye mediante la colaboración de los usuarios que encuentran y corrigen errores. Aún cuando no trabajemos en un proyecto Open Source, el trabajo en equipo permite producir sistemas más confiables en un lapso de tiempo menor. El empleo de un servidor donde siempre están todas las versiones del software desarrollado permite una colaboración más fluída.
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Respuestas}
+\begin{block}{\textquestiondown Actualización automatizada (Raspberry PI)?}
+Las Raspberry Pi son computadoras muy potentes, capaces de ejecutar programas sofisticados. Nosotros vamos a emplear Raspbian, 
+una variante de Debian (una distribucion de Linux). Uno de los servicios de Linux se denomina crond, y es capaz de ejecutar un comando de nuestra elecci\'{o}n en un horario también de nuestra elección. Así cada Raspberry Pi puede conectarse al servidor y verificar si tiene que actualizar su software, por ejemplo a medianoche. En otras palabras, nosotros solamente debemos actualizar el servidor cuando sea necesario y todas las placas que programemos se conectar\'{a}n y se actualizarán.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Respuestas}
+\begin{block}{\textquestiondown Como evitamos problemas con las versiones del software y del hardware?}
+Cuando se desarrolla un sistema industrial, es normal que haya diferentes versiones de software y hardware.
+Además, cuando varias personas trabajando en el mismo proyecto, se pueden generar dos modificaciones diferentes del mismo archivo por accidente. Al tener todo los archivos almacenados en un servidor, ahí se puede verificar si existen estos tipos de problemas.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Respuestas}
+
+\begin{enumerate}
+\item GIT es un sistema de control de versiones, formado por un servidor y un cliente, que implementa todas estas características que hemos planteado.
+\item Si comenzamos a trabajar en un proyecto que ya está en funcionamiento, primero usamos el cliente para copiar la información del servidor a nuestra computadora.
+\item Editamos el software en nuestra computadora, y cuando terminamos empleamos el cliente para indicar que archivos van al servidor.
+\item Si aparece alg\'{u}n conflicto, el cliente nos avisa con quien tenemos que negociar la versi\'{o}n final del archivo en cuesti\'{o}n o nos permite abrir dos ramas de desarrollo distintas.
+\end{enumerate}
+
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+\section{GIT: comandos y ejemplos de uso} 
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Github y Bitbucket}
+
+\begin{verbatim}
+https://github.com/
+
+https://bitbucket.org/
+\end{verbatim}
+
+\begin{block}{Github}
+Servidor GIT, con repositorios p\'{u}blicos gratuitos, otras opciones pagas.
+\end{block}
+
+\begin{block}{Bitbucket}
+Servidor GIT, con repositorios p\'{u}blicos y privados gratuitos, otras opciones pagas.
+\end{block}
+
+\begin{block}{Crear cuentas de usuarios en uno de los dos servidores}
+Es necesario crear una cuenta de usuario en uno de los dos sitios, a elecci\'{o}n de cada uno.
+\end{block}
+
+\end{frame}
+
+\subsection{Git y Github}
+
+\begin{frame}
+\frametitle{\textquestiondown Que vamos a aprender?}
+
+\begin{enumerate}
+\item Como manejamos proyectos usando git y github.
+\item Como contribuimos a proyectos dirigidos por otras personas.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\textquestiondown Es necesario instalar algo?}
+
+\begin{enumerate}
+\item Raspbian ya tiene preinstalado git, por lo tanto en la Raspberry Pi no hay nada que instalar por el momento.
+
+\item En Debian, Ubuntu podemos escribir
+\begin{verbatim}
+sudo apt install git
+\end{verbatim}
+
+\item En Fedora, podemos escribir
+\begin{verbatim}
+sudo dnf install git
+\end{verbatim}
+
+\item En Windows, descargar el instalador
+\begin{verbatim}
+https://git-scm.com/download/win
+\end{verbatim}
+
+\item Otras alternativas para Windows
+\begin{verbatim}
+http://www.jamessturtevant.com/posts/
+    5-Ways-to-install-git-on-Windows/
+\end{verbatim}
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{PythonAnywhere}
+	
+\begin{enumerate}
+	\item En PythonAnywhere, podemos abrir una terminal en nuestro navegador.
+	Esta terminal nos da acceso a una máquina virtual con Linux en PythonAnywhere.
+	
+	\item En la terminal disponemos de git, por lo tanto no necesitamos instalarlo.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\textquestiondown Hay documentaci\'{o}n para leer?}
+
+\begin{verbatim}
+https://git-scm.com/doc
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Repositorio GIT}
+
+Un repositorio GIT es un almacenamiento virtual para proyectos de software. 
+Permite guardar distintas versiones de archivos, que pueden ser accedidos en cualquier momento.
+
+\end{frame}
+
+\subsubsection{Computadora con Linux}
+
+\begin{frame}[fragile]
+\frametitle{Configuraci\'{o}n}
+
+En una computadora con Linux, abramos una terminal y ejecutemos los siguientes comandos.
+
+\begin{enumerate}
+\item<1-> Configuramos estos valores para simplificar algunos comandos.
+\begin{verbatim}
+>  git config --global user.name "Mi Nombre"
+>  git config --global user.email "mi_cuenta@ejemplo.org"
+\end{verbatim}
+Omitimos \verb+--global+ si tenemos varios repositorios en una computadora y deseamos configurar solamente uno.
+
+\item<2->Esto es muy importante
+\begin{verbatim}
+>  git config --global core.editor nano
+\end{verbatim}
+El editor por defecto es vim. Con esta configuración lo cambiamos por nano.
+Si quieren, prueben ejecutar vim. 
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Como crear repositorios}
+
+\begin{enumerate}
+
+\item<1-> En una computadora con Linux, para crear un repositorio local ejecutamos en la terminal los tres comandos siguientes
+\begin{verbatim}
+> mkdir proyecto
+> cd proyecto
+> git init
+\end{verbatim}
+
+\item<2-> En una computadora con Linux, para copiar un repositorio existente en github ejecutamos en la terminal los comandos
+\begin{verbatim}
+> git clone <repo-url>
+\end{verbatim}
+donde \verb|<repo-url>| es la direcci\'{o}n web del repositorio deseado.
+Por ejemplo, una direcci\'{o}n de un repositorio en Github es
+\begin{verbatim}
+https://github.com/DanielBerns/Image-Recognition.git
+\end{verbatim}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Como crear repositorios, explicaci\'{o}n}
+
+\begin{enumerate}
+\item El comando \verb|git init| crea un directorio denominado \verb|.git| dentro del directorio proyecto, donde se guardan datos para manejar las versiones de los archivos incluidos en el repositorio.
+\begin{verbatim}
+mkdir proyecto
+cd proyecto
+git init
+\end{verbatim}
+
+\item El comando \verb|git clone| copia un repositorio desde un servidor. Este comando crea un directorio con el nombre del repositorio, y dentro de este directorio aparece el directorio \verb|.git| correspondiente y los archivos incluidos en el repositorio.
+\begin{verbatim}
+git clone https://github.com/DanielBerns/Image-Recognition.git
+\end{verbatim}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Directorio controlado}
+
+\begin{enumerate}
+\item El directorio controlado de nuestro repositorio es aquel donde encontramos al directorio \verb|.git|
+
+\item Por ejemplo, si ejecutamos
+\begin{verbatim}
+git clone https://github.com/DanielBerns/Image-Recognition.git
+\end{verbatim}
+git crear\'{a} un directorio con el nombre \verb|Image-Recognition| que es el directorio controlado del repositorio \verb|Image-Recognition|, porque cuando ejecutamos
+\begin{verbatim}
+cd Image-Recognition
+ls -a
+\end{verbatim}
+vamos a ver que aparece el directorio \verb|.git| en el listado de archivos.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Diferencia entre git init y git clone}
+
+\begin{enumerate}
+\item El comando \verb|git init| inicializa un repositorio en forma local, sin usar ning\'{u}n servidor remoto.
+
+\item El comando \verb|git clone| copia un repositorio de un servidor remoto a la computadora local.
+
+\item Un repositorio local creado con \verb|git init| puede conectarse a un servidor remoto, pero no es necesario hacerlo.
+En caso de usar un repositorio local, podemos manejar las distintas versiones de nuestro software pero sin compartirlo con otras persnas. En este caso, tendremos que usar un m\'{e}todo alternativo para pasar nuestro c\'{o}digo al sistema embebido (que veremos mas adelante, en el cap\'{\i}tulo ``SSH'').
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+% https://stackoverflow.com/questions/4820039/creating-a-copy-of-local-git-repository-on-a-remote-server
+\frametitle{Despu\'{e}s de git init, como conectarnos a un servidor remoto}
+
+Supongamos que hemos creado un repositorio local con \verb|git init|, y deseamos ``conectarlo'' a un servidor remoto.
+\begin{enumerate}
+\item Creamos un repositorio en el servidor remoto, empleando la interfaz web de Github. Supongamos que la direcci\'{o}n que github nos da como resultado es
+\begin{verbatim}
+https://github.com/DanielBerns/cia.git
+\end{verbatim}
+Recordemos el usuario y la contrase\~{n}a de nuestra cuenta en Github porque la necesitaremos en el siguiente paso.
+
+\item En la terminal local, agregamos el repositorio remoto al local
+\begin{verbatim}
+git remote add origin 
+    https://github.com/DanielBerns/cia.git
+\end{verbatim}
+Para esto necesitamos estar en el directorio controlado local.
+
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Como agregar y enviar archivos al repositorio en el servidor}
+
+\begin{enumerate}
+
+\item Dentro del directorio controlado (el directorio del proyecto), podemos crear los archivos que deseemos. 
+Una suposici\'{o}n impl\'{\i}cita es que estos son archivos de texto, que contienen programas escritos en python o c (por ejemplo).
+Se supone que no son archivos binarios de gran magnitud.
+
+\item Una vez que hemos escrito un archivo (supongamos \verb|first_example.py|) ejecutemos el comando
+\begin{verbatim}
+git status
+\end{verbatim}
+que nos mostrar\'{a} un mensaje donde nos indica que existe un archivo modificado (\verb|first_example.py|) 
+y que sus cambios no est\'{a}n registrados.
+Tambi\'{e}n nos indica que podemos ejecutar el comando
+\begin{verbatim}
+git add first_example.py
+\end{verbatim}
+Este comando prepara lo que se denomina ``staging area'', o sea el listado de archivos que van a ser incluidos en una nueva versi\'{o}n.
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Como agregar y enviar archivos al repositorio en el servidor}
+
+\begin{enumerate}
+
+\item Una vez que agregamos el archivo, tenemos que ejecutar el comando
+\begin{verbatim}
+git commit -m "creating first_example.py"
+\end{verbatim}
+donde lo que escribimos despu\'{e}s de \verb|-m| es un mensaje que aparecer\'{a} en github como comentario ``adherido'' a los archivos incluidos en la ``staging area''.
+
+\item Finalmente, ejecutamos
+\begin{verbatim}
+git push
+\end{verbatim}
+Despu\'{e}s de este comando, podemos verificar mediante la interfaz web de Github que los archivos se han actualizado en el servidor.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Como deshacer cambios}
+ 
+\begin{enumerate}
+  \item Podemos usar el comando \verb-git checkout- para deshacer cambios, y volver a versiones anteriores.
+  \item Suponemos que hemos ejecutado al menos un \verb-git push-.
+  \item Ejecutando
+  \begin{verbatim}
+     git checkout
+  \end{verbatim}
+  hacemos que desaparezca cualquier cambio hecho a los archivos 
+  incluidos en nuestro directorio de trabajo, después del último \verb-git push-.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Como deshacer cambios a un archivo}
+ 
+\begin{enumerate}
+  \item Supongamos que tenemos un archivo \verb-README.md-
+  \item Además, este archivo ha sido incluido en el repositorio antes del último \verb-git push-.
+  \item Ejecutando
+  \begin{verbatim}
+     git checkout README.md
+  \end{verbatim}
+  hacemos que desaparezca cualquier cambio hecho al archivo \verb-README.md- 
+  después del último \verb-git push-.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ramas (branches)}
+	
+\begin{enumerate}
+	\item Un repositorio tiene una o más ramas (branches). 
+	
+	\item Supongamos que hemos estado trabajando en un programa durante varias
+	semanas, y por fin se lo mostramos a un grupo de usuarios.
+	
+	\item Los usuarios necesitan dos cosas: explicaciones sobre como usar el programa, y que corrijamos los errores que van apareciendo.
+	
+	\item Para poder explicar el uso del programa, necesitamos mantener el código tal cual fue entregado. Para poder corregir errores, necesitamos modificar el código. 
+	
+	\item Para resolver esta contradicción, tenemos las distintas ramas. 
+	
+	\item Cuando creamos un repositorio, tenemos una rama llamada main o master.
+	
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ramas (branches)}
+	
+\begin{enumerate}
+		\item Un repositorio tiene una o más ramas (branches). 
+		\item Cuando creamos un repositorio, tenemos una rama llamada main o master.
+        \item Cuando necesitemos modificar el código y a la vez mantener una versión anterior, podemos crear una rama nueva con un nombre propio.
+        % \item El comando es \begin{verbatim}  	git checkout -b nombre_rama  \end{verbatim}
+
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Crear una rama: esto es magia}
+	
+	Comando para crear una rama y "copiar archivos"
+	\begin{verbatim}
+		git checkout -b nombre_rama
+	\end{verbatim}
+
+    Al crear una rama se crea una copia nueva.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Cambiar de ramas}
+	
+	Comando para cambiar de rama (¡atención!)
+	\begin{verbatim}
+		git checkout main         # volvemos a la rama main
+		git checkout nombre_rama  # volvemos a la rama nombre_rama
+	\end{verbatim}
+	
+\end{frame}
+
+\begin{Práctica
+\end{document} 
+
