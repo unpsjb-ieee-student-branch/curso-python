@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import random
 
 def op_sum(a, b):
@@ -6,16 +5,16 @@ def op_sum(a, b):
     return a + b
 
 def op_sub(a, b):
-    print(f'{a} + {b}')
+    print(f'{a} - {b}')
     return a - b
 
 def op_mult(a, b):
-    print(f'{a} + {b}')
+    print(f'{a} * {b}')
     return a * b
 
 def op_div(a, b):
-    print(f'{a} + {b}')
-    return a * b
+    print(f'{a} / {b}')
+    return a / b
 
 minimum = 0
 maximum = 100
@@ -30,7 +29,7 @@ try:
         index = random.randint(0, top_index)
         op = ops[index]
         c = op(a, b)
-        text = raw_input()
+        text = input()
         try:
             answer = int(text)
         except ValueError:
@@ -39,7 +38,7 @@ try:
             wrong += 1
         else:
             if answer == c:
-                print('Ok)'
+                print('Ok')
                 ok += 1
             else:
                 print('Wrong.')
@@ -48,6 +47,7 @@ try:
     print('ok {ok:d} - wrong {wrong:d}')
 except KeyboardInterrupt:
     pass
-
+except EOFError:
+    pass
 print('ok {ok:d} - wrong {wrong:d}')
 
