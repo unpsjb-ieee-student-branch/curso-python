@@ -4,6 +4,7 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usetheme{Madrid}
+\def\figurename{Figura}
 \begin{document}
 	\author{Daniel Walther Berns}
 	\title{Como usar pythonanywhere.com}
@@ -57,7 +58,7 @@
 	\item \begin{verbatim}ls\end{verbatim} para ver los archivos en el directorio actual.
 	\item \begin{verbatim}pwd\end{verbatim} para ver el path o camino del directorio actual.
 	\item \begin{verbatim}mkdir xyz\end{verbatim} para crear un directorio de nombre xyz.
-	\item \begin{verbatim}cd xyz\end{verbatim} para moverse al directorio de nobre xyz.
+	\item \begin{verbatim}cd xyz\end{verbatim} para moverse al directorio de nombre xyz.
 \end{enumerate}
 \end{frame}
 
@@ -190,8 +191,41 @@
 	    \item \begin{verbatim}
 	    	python3 brainz.py
 	    \end{verbatim}
-        \item Comente en el foro que es lo que hace el programa brainz. Explique sus instrucciones y lógica.
+        \item Comente en el foro que es lo que hace el programa \verb-brainz.py-. Explique sus instrucciones y lógica.
+        Para ver y editar \verb-brainz.py- puede usar el comando
+        \begin{verbatim}
+        	nano brainz.py
+        \end{verbatim}
+       
+%        Otra posibilidad es emplear el comando
+%        \begin{verbatim}
+%        	cat brainz.py | less
+%        \end{verbatim}
+%        solamente para ver el archivo. 
 	\end{enumerate}
+\end{frame}
+\begin{frame}
+	\frametitle{Nano}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{sc/nano_brainz.png}
+		\caption{Editando brainz.py con nano. Observe que para guardar cambios debe usar Ctrl + O, y para salir del editor Ctrl + X.}
+		\label{fig:nanobrainz}
+	\end{figure}
+	
+\end{frame}
 
+\begin{frame}
+	\frametitle{Github clone repo}
+	
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{sc/github_clone_repo}
+	\caption{Como obtener la url del repo para el comando clone en github: presione el boton verde con el nombre ``Code". Seleccione HTTPS y presione el ícono a la  derecha para copiar la dirección al portapapeles}
+	\label{fig:githubclonerepo}
+\end{figure}
+
+	
 \end{frame}
 \end{document}

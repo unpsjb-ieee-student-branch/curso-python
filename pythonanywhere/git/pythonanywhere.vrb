@@ -13,6 +13,15 @@
 	    \item \begin{verbatim}
 	    	python3 brainz.py
 	    \end{verbatim}
-        \item Comente en el foro que es lo que hace el programa brainz. Explique sus instrucciones y lógica.
-	\end{enumerate}
+        \item Comente en el foro que es lo que hace el programa \verb-brainz.py-. Explique sus instrucciones y lógica.
+        Para ver y editar \verb-brainz.py- puede usar el comando
+        \begin{verbatim}
+        	nano brainz.py
+        \end{verbatim}
 
+%        Otra posibilidad es emplear el comando
+%        \begin{verbatim}
+%        	cat brainz.py | less
+%        \end{verbatim}
+%        solamente para ver el archivo.
+	\end{enumerate}
