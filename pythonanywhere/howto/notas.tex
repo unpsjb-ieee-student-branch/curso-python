@@ -196,6 +196,12 @@ En la pantalla Dashboard aparece un enlace con el título Web (figura \ref{fig:w
 Por ahora aceptamos el dominio por defecto (figura \ref{fig:webappdomain}), seleccionamos Flask (figura \ref{fig:webappflask}), aceptamos el nombre por defecto del sitio web (figura \ref{fig:webappmysite}) y la versión de python (figura \ref{fig:webapppython38}).
 
 
+En las pantallas (\ref{fig:webapppart1}), (\ref{fig:webapppart2}), (\ref{fig:webappstatic0}), (\ref{fig:webappcode}) vemos distintas partes del panel de control de la aplicación web. Para entender que es lo que estamos haciendo, tenemos que tener en cuenta que un sitio web o aplicación web tiene dos tipos de archivos: dinámicos y estáticos. La aplicación web recibe pedidos en distintas direcciones web o url (universal resource locator), y según los distintos pedidos y 
+diferentes urls contesta con archivos dinámicos (generados con información de una base de datos o resultado de algún cálculo) o con archivos estáticos (cuyo contenido es inalterable). 
+
+En el repositorio, en \verb|curso-python/pythonanywhere/calendar|, tenemos un directorio calendars con archivos html conteniendo los calendarios de los años 1900 al 2099. Estos
+archivos son inalterables (los calendarios no cambian), por lo tanto los vamos a publicar como archivos estáticos aprovechando que pythonanywhere nos permite definir los archivos con los que responde el servidor web cuando recibe determinados pedidos en ciertas urls (ver figura \ref{fig:webappstatic0}).
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{sc/webapp_part_1}
